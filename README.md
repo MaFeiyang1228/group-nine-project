@@ -66,3 +66,19 @@ RISC-V CPU 领域近 10 年的全球发文趋势与区域研究特征；
 整理仓库所有文件，确保data/（原始 + 清洗后数据）、src/（完整代码）、outputs/（所有结果）无缺失；
 完善 README.md 和变更日志，提交最终版本至 GitHub；
 准备课程答辩材料（PPT 归档至reports/slides/）。
+
+
+## Lesson 2 – Query Design
+
+完成 RISC-V CPU 研究方向的检索式设计。
+
+完成内容：
+- config/query.yaml （检索式配置）
+- config/synonyms.yaml （关键词同义词）
+- reports/query_changelog.md （检索式修改记录）
+
+该检索式将用于 Lesson3 和 Lesson4 的文献检索与筛选。
+溯源内容：
+**检索式配置**: [`config/query.yaml`](config/query.yaml) —— 包含对象(Object)、方法(Method)及限定条件(Constraint)的参数化定义 [cite: 8, 10]。
+**同义词维护**: [`config/synonyms.yaml`](config/synonyms.yaml) —— 针对 RISC-V、处理器架构等核心术语的扩展词表 [cite: 8, 9]。
+**变更日志**: [`reports/query_changelog.md`](reports/query_changelog.md) —— 记录了检索式从 v0.1 到当前版本的优化轨迹及修订原因 。
