@@ -1,0 +1,50 @@
+version: "0.1"
+
+project: "RISC-V CPU Bibliometric Analysis"
+
+time_window: [2020, 2025]
+
+language: "English"
+
+fields:
+  - title
+  - abstract
+  - keyword
+
+doc_type:
+  - article
+  - review
+
+query:
+
+  object:
+    - "RISC-V"
+    - "RISC V"
+    - "RISC-V processor"
+    - "RISC-V CPU"
+    - "RISC-V architecture"
+    - "RISC-V core"
+
+  method:
+    - "processor design"
+    - "cpu architecture"
+    - "microarchitecture"
+    - "instruction set architecture"
+    - "processor architecture"
+    - "hardware architecture"
+
+  context:
+    - "computer architecture"
+    - "embedded system"
+    - "system on chip"
+    - "SoC"
+    - "hardware design"
+    - "chip design"
+
+exclusion:
+  - "quantum computing"
+  - "biological neural network"
+
+notes:
+  description: "Query configuration for bibliometric analysis of RISC-V CPU research."
+  database: "Web of Science / Scopus"
