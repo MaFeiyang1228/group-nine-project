@@ -233,5 +233,51 @@ RISC-V CPU 领域近 10 年的全球发文趋势与区域研究特征；
 - 交付规范：所有文件已同步至 GitHub，符合课程提交规范，报告结构清晰，逻辑严谨。
 
 五、 总结
-本次 Lesson 3 至 Lesson 4 流程顺利，完整实现了 “数据清洗 -> 可视化分析 -> 报告撰写” 的端到端流程。交付物符合课程要求，具备良好的学术展示价值。
+本次 Lesson 3 至 Lesson 4 流程顺利，完整实现了 "数据清洗 -> 可视化分析 -> 报告撰写" 的端到端流程。交付物符合课程要求，具备良好的学术展示价值。
+
+## Lesson 5 图数据模型与数据质量分析
+
+完成内容：
+- docs/data_model.md：图数据模型草图，明确节点类型/属性、边类型/权重/方向性，附示例数据
+- docs/classroom_exercise.md：课堂实操练习，手算共被引边权重，掌握Cosine、Jaccard相似度计算
+- params.md：网络定义参数，包括节点类型、边类型、阈值参数等
+- cleaning_rules.md：数据清洗与消歧规则，版本化管理
+- reports/data_quality.md：数据质量报告，详细分析数据完整性
+- reports/query_rationale.md：产出记录，记录决策过程和依据
+- data/processed/normalized_data_complete.csv：标准化的文献数据
+- reports/field_missing_rate.md：数据字段缺失率报告
+- reports/lotka_law_summary.md：Lotka定律总结
+
+具体工作：
+1. **图数据模型设计**：创建了包含论文、作者、关键词、期刊的节点类型，以及作者-论文、论文-关键词、论文-期刊、论文引用、作者合作、关键词共现、论文共被引的边类型，明确了权重计算方法和方向性。
+
+2. **课堂实操练习**：完成了共被引边权重手算示例，掌握了Cosine和Jaccard相似度计算方法，理解了Top-N和Min Weight阈值选择逻辑。
+
+3. **交付物自检**：按QC清单完成交付物自检，将网络定义写入params.md，清洗/消歧规则版本化至cleaning_rules.md，设计了阈值敏感性对照实验。
+
+4. **数据质量分析**：输出了详细的数据质量报告和字段缺失率报告，分析了数据完整性和一致性，评估了数据质量等级。
+
+5. **产出记录**：编写了完整的产出记录，记录了项目概述、数据处理流程、决策依据、产出内容、技术实现、质量保证和结论建议。
+
+6. **数据整理**：将文献数据整理为统一的pandas DataFrame表结构，标准化了数据格式和字段。
+
+7. **经典定律总结**：撰写了Lotka定律的内涵及其应用局限的总结，为文献计量学分析提供理论基础。
+
+交付成果：
+- 图数据模型文件：docs/data_model.md
+- 课堂练习文件：docs/classroom_exercise.md
+- 网络参数文件：params.md
+- 清洗规则文件：cleaning_rules.md
+- 数据质量报告：reports/data_quality.md
+- 产出记录：reports/query_rationale.md
+- 标准化数据：data/processed/normalized_data_complete.csv
+- 字段缺失率报告：reports/field_missing_rate.md
+- 经典定律总结：reports/lotka_law_summary.md
+
+关键成果：
+- 建立了完整的图数据模型，为后续网络分析提供基础
+- 掌握了共被引边权重计算和相似度分析方法
+- 完成了数据质量评估和字段缺失率分析
+- 建立了标准化的数据处理流程和清洗规则
+- 为文献计量学分析提供了理论基础和实践指导
 

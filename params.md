@@ -1,0 +1,76 @@
+# 网络定义参数
+
+## 1. 节点类型
+
+| 类型 | 说明 | 属性 |
+|------|------|------|
+| article | 论文节点 | id, title, abstract, publication_year, journal, volume, issue, pages, doi, cited_reference_count |
+| author | 作者节点 | id, name |
+| keyword | 关键词节点 | id, name |
+| journal | 期刊节点 | id, name |
+
+## 2. 边类型
+
+| 类型 | 方向 | 权重 | 含义 |
+|------|------|------|------|
+| authored | 作者 → 论文 | 1 | 作者撰写了论文 |
+| has_keyword | 论文 → 关键词 | 1 | 论文包含该关键词 |
+| published_in | 论文 → 期刊 | 1 | 论文发表在该期刊 |
+| cites | 引用论文 → 被引用论文 | 1 | 一篇论文引用了另一篇论文 |
+| coauthored_with | 双向 | 合作次数 | 两位作者共同撰写过论文 |
+| co_occurs_with | 双向 | 共现次数 | 两个关键词在同一篇论文中出现 |
+| co_cited_with | 双向 | 共被引次数 | 两篇论文被同一篇其他论文引用 |
+
+## 3. 阈值参数
+
+| 参数 | 说明 | 默认值 | 可选值 |
+|------|------|--------|--------|
+| co_citation_threshold | 共被引边权重阈值 | 1 | 1, 2, 3, ... |
+| top_n_co_citations | 共被引边Top-N数量 | 1000 | 500, 1000, 2000, ... |
+| similarity_measure | 相似度计算方法 | cosine | cosine, jaccard |
+| author_disambiguation | 作者消歧方法 | name_based | name_based, institution_based |
+| keyword_normalization | 关键词标准化方法 | case_insensitive | case_insensitive, synonym_mapping |
+
+## 4. 阈值敏感性对照实验
+
+### 4.1 实验设置
+
+| 实验ID | 共被引阈值 | 相似度方法 | Top-N数量 |
+|--------|------------|------------|-----------|
+| Exp1 | 1 | cosine | 1000 |
+| Exp2 | 2 | cosine | 1000 |
+| Exp3 | 3 | cosine | 1000 |
+| Exp4 | 1 | jaccard | 1000 |
+| Exp5 | 1 | cosine | 500 |
+
+### 4.2 预期结果
+
+| 实验ID | 预期网络密度 | 预期节点数 | 预期边数 |
+|--------|--------------|------------|----------|
+| Exp1 | 高 | 多 | 多 |
+| Exp2 | 中 | 中 | 中 |
+| Exp3 | 低 | 少 | 少 |
+| Exp4 | 中 | 中 | 中 |
+| Exp5 | 中 | 中 | 少 |
+
+### 4.3 实验分析
+
+- **阈值影响**：随着共被引阈值的增加，网络密度降低，边数减少
+- **相似度方法影响**：不同相似度计算方法会影响边的权重分布
+- **Top-N影响**：Top-N数量直接控制网络规模
+
+## 5. 网络构建流程
+
+1. 数据预处理：清洗和标准化
+2. 节点提取：论文、作者、关键词、期刊
+3. 边构建：
+   - 作者-论文关系
+   - 论文-关键词关系
+   - 论文-期刊关系
+   - 论文-论文引用关系
+4. 派生关系计算：
+   - 作者合作关系
+   - 关键词共现关系
+   - 论文共被引关系
+5. 阈值应用：根据参数过滤边
+6. 网络分析：计算网络指标
